@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>班级宠物系统</title>
+    <link rel="icon" type="image/png" href="./pets/azure-dragon/lv8.png" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div id="app" class="app">
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-mark"><img class="pet-art" src="./pets/azure-dragon/lv8.png" alt="苍龙" /></span>
+          <div>
+            <h1>班级宠物系统</h1>
+            <p>班级经营 · 宠物养成 · 积分对战</p>
+          </div>
+        </div>
+
+        <div class="topbar-class">
+          <label for="classSelect">当前班级</label>
+          <div class="class-control">
+            <i data-lucide="school"></i>
+            <select id="classSelect" aria-label="选择班级"></select>
+          </div>
+        </div>
+
+        <div class="topbar-actions">
+          <span id="saveStatus" class="save-status" title="本地自动保存状态"><i data-lucide="hard-drive-download"></i>已保存</span>
+          <button id="fileSyncBtn" class="button button-ghost" type="button" title="绑定一个本地 JSON 文件，每次保存自动写入"><i data-lucide="file-json"></i>文件同步</button>
+          <button id="exportStateBtn" class="button button-ghost" type="button"><i data-lucide="download"></i>备份</button>
+          <button id="importStateBtn" class="button button-ghost" type="button"><i data-lucide="upload"></i>恢复</button>
+          <button id="resetStateBtn" class="button button-danger-ghost" type="button"><i data-lucide="trash-2"></i>清空</button>
+        </div>
+      </header>
+
+      <div class="shell">
+        <nav class="side-nav" aria-label="功能导航">
+          <button class="nav-item is-active" data-view="classes" type="button"><i data-lucide="school"></i><span>班级</span></button>
+          <button class="nav-item" data-view="pets" type="button"><i data-lucide="paw-print"></i><span>宠物</span></button>
+          <button class="nav-item" data-view="dex" type="button"><i data-lucide="book-open"></i><span>图鉴</span></button>
+          <button class="nav-item" data-view="points" type="button"><i data-lucide="coins"></i><span>积分</span></button>
+          <button class="nav-item" data-view="battle" type="button"><i data-lucide="swords"></i><span>对战</span></button>
+          <button class="nav-item" data-view="ranking" type="button"><i data-lucide="trophy"></i><span>排行</span></button>
+          <button class="nav-item" data-view="records" type="button"><i data-lucide="history"></i><span>记录</span></button>
+        </nav>
+
+        <main id="view" class="view"></main>
+      </div>
+
+      <footer class="statusbar">
+        <span id="storageInfo">数据自动保存在本机浏览器</span>
+        <span id="lastBackupInfo"></span>
+      </footer>
+    </div>
+
+    <input id="importExcelInput" type="file" accept=".xlsx,.xls,.csv" hidden />
+    <input id="importStateInput" type="file" accept=".json" hidden />
+    <div id="toastHost" class="toast-host" aria-live="polite"></div>
+
+    <script src="./libs/xlsx.full.min.js"></script>
+    <script src="./libs/lucide.min.js"></script>
+    <script src="./data.js"></script>
+    <script src="./app.js"></script>
+    <div id="drawModalMount"></div>
+</body>
+</html>
